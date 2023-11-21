@@ -81,7 +81,14 @@ class ImageControl:
         width = self._imageEntity.width
         channel = self._imageEntity.channel
         image = self._imageEntity.imageData
+        cropFilpNp = np.zeros((round(height*(percent/100)), round(width*(percent/100)), channel), dtype=np.uint8)
         setStart=(1-percent/100)/2
         setEnd=1-setStart
-        cropFilpNp=image[round(setStart*height):round(setEnd*height),round(setStart*width):round(setEnd*width)]
+        startHeight=round(setStart*height)
+        # endHeight=round(setEnd*height)
+        startWidth=round(setStart*width)
+        # endWidth=round(setEnd*width)
+        for i in range(0,len(cropFilpNp),1):
+            for j in range(0,len(cropFilpNp[0]),1):
+                cropFilpNp[i,j]=image[i+startHeight,j+startWidth]
         return cropFilpNp
