@@ -71,7 +71,8 @@ class ImageBoundary:
     def showImage(self,image : np.ndarray,name:str):
         cv2.namedWindow(name, cv2.WINDOW_NORMAL)
         cv2.imshow(name,image)
-        height, width, _ =image.shape
+        height=image.shape[0]
+        width=image.shape[1]
         cv2.resizeWindow(name,width,height)
         self._imgCheck=True
         while self._imgCheck is not False:
@@ -82,7 +83,8 @@ class ImageBoundary:
             return
     def showImageAll(self,image: list[np.ndarray],name: list[str]):
         for i in range(len(image)):
-            height, width, _ = image[i].shape
+            height=image[i].shape[0]
+            width=image[i].shape[1]
             cv2.namedWindow(name[i], cv2.WINDOW_NORMAL)
             cv2.resizeWindow(name[i],width,height)
             cv2.imshow(name[i],image[i])
