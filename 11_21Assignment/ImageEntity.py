@@ -1,8 +1,6 @@
 import os
 
-import PIL.JpegImagePlugin
 import numpy
-from PIL import Image
 import numpy as np
 import cv2
 class ImageEntity:
@@ -18,9 +16,6 @@ class ImageEntity:
     @staticmethod
     def returnImageEntity(name : str):
         return ImageEntity(imageName=name)
-    # @property
-    # def imageData(self) -> Image.Image:
-    #     return self._imageData
     @property
     def imageData(self) -> np.ndarray:
         return self._imageData
